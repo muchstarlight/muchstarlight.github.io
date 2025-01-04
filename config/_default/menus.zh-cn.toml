@@ -82,6 +82,6 @@
 
 [[footer]]
   pre = "rss"
-  name = "RSS [待完善]"
+  name = "RSS"
   url = "https://blog.muchstarlight.top/index.xml"
   weight = 30
