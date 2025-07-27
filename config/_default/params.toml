@@ -21,8 +21,8 @@ disableImageOptimization = true
 disableTextInHeader = false
 # backgroundImageWidth = 1200
 
-defaultBackgroundImage = "img/background.webp" # used as default for background images 
-# defaultFeaturedImage = "IMAGE.jpg" # used as default for featured images in all articles
+defaultBackgroundImage = "img/background.svg" # used as default for background images 
+defaultFeaturedImage = "img/featured.svg" # used as default for featured images in all articles
 
 highlightCurrentMenuArea = true
 smartTOC = true
@@ -57,7 +57,7 @@ smartTOCHideUnfocusedChildren = true
   showViews = false
   showLikes = false
   showDateOnlyInArticle = false
-  showDateUpdated = false
+  showDateUpdated = true
   showAuthor = true
   showAuthorBottom = true
   showHero = true
