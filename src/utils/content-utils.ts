@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
@@ -33,7 +33,21 @@ export async function getSortedPosts() {
 }
 export type PostForList = {
 	slug: string;
-	data: CollectionEntry<"posts">["data"];
+	data: {
+		title: string;
+		published: Date;
+		updated?: Date;
+		draft?: boolean;
+		description?: string;
+		image?: string;
+		tags: string[];
+		category?: string;
+		lang?: string;
+		prevTitle?: string;
+		prevSlug?: string;
+		nextTitle?: string;
+		nextSlug?: string;
+	};
 };
 export async function getSortedPostsList(): Promise<PostForList[]> {
 	const sortedFullPosts = await getRawSortedPosts();
@@ -41,7 +55,21 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 	// delete post.body
 	const sortedPostsList = sortedFullPosts.map((post) => ({
 		slug: post.slug,
-		data: post.data,
+		data: {
+			title: post.data.title,
+			published: post.data.published,
+			updated: post.data.updated,
+			draft: post.data.draft,
+			description: post.data.description,
+			image: post.data.image,
+			tags: post.data.tags,
+			category: post.data.category ?? undefined, // Convert null to undefined
+			lang: post.data.lang,
+			prevTitle: post.data.prevTitle,
+			prevSlug: post.data.prevSlug,
+			nextTitle: post.data.nextTitle,
+			nextSlug: post.data.nextSlug,
+		},
 	}));
 
 	return sortedPostsList;
