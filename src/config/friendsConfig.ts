@@ -22,16 +22,16 @@ export const friendsPageConfig: FriendsPageConfig = {
 
 // 友链配置
 export const friendsConfig: FriendLink[] = [
-	{
-		title: "夏夜流萤",
-		imgurl:
-			"https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-		siteurl: "https://blog.cuteleaf.cn",
-		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
-		enabled: false, // 是否启用
-	}
+	// 在此添加友链，示例格式：
+	// {
+	// 	title: "站点名称",
+	// 	imgurl: "https://example.com/avatar.png",
+	// 	desc: "站点简介",
+	// 	siteurl: "https://example.com",
+	// 	tags: ["Blog"],
+	// 	weight: 10,
+	// 	enabled: true,
+	// },
 ];
 
 // 获取启用的友链并进行排序
