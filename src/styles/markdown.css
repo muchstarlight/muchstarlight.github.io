@@ -1,6 +1,8 @@
 @reference "tailwindcss";
 
 .custom-md {
+  overflow-wrap: break-word;
+
   h1 {
     @apply text-3xl;
   }
@@ -11,6 +13,11 @@
   h4,
   h5,
   h6 {
+    /* Keep native hash-anchor navigation visible under fixed navbar */
+    body.sticky-navbar & {
+      scroll-margin-top: 5.5rem;
+    }
+
     .anchor {
       @apply transition! -m-0.5! ml-[0.2ch]! p-0.5! select-none! opacity-0! no-underline!;
 
@@ -30,6 +37,7 @@
     @apply relative bg-none font-medium text-(--primary) underline decoration-(--link-underline) decoration-1 decoration-dashed underline-offset-4;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+    word-break: break-word;
 
     &:hover,
     &:active {

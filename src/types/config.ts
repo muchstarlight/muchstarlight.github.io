@@ -118,6 +118,15 @@ export type SiteConfig = {
 		umamiAnalytics?: {
 			websiteId?: string; // Umami Website ID
 			scriptUrl?: string; // Umami JS地址，支持使用自建
+			trackOutboundLinks?: boolean; // 是否追踪出站链接点击事件，默认 true
+			collectWebVitals?: boolean; // 是否自动收集访客浏览器核心网页指标，默认 false
+			relpays?: {
+				enabled?: boolean; // 是否启用会话回放，默认 false
+				sampleRate?: number; // 录制会话采样率，范围 0-1，默认 0.15
+				maskLevel?: "moderate" | "strict"; // 隐私遮罩级别，默认 moderate
+				maxDuration?: number; // 单次录制最大时长（毫秒），默认 300000
+				blockSelector?: string; // 需要完全排除录制的元素 CSS 选择器
+			};
 		};
 		la51Analytics?: {
 			Id?: string; // 51la 统计 ID
@@ -311,6 +320,23 @@ export type PluginCollapsibleConfig = {
 	lineThreshold: number; // 触发折叠的行数阈值
 	previewLines: number; // 折叠时显示的预览行数
 	defaultCollapsed: boolean; // 默认是否折叠
+};
+
+/**
+ * PlantUML 图表渲染配置
+ *
+ * 控制 markdown 文章中 ` ```plantuml ` 代码块到 PlantUML 服务器 SVG 图片的
+ * 构建时编码与客户端渲染行为。
+ */
+export type PlantUMLConfig = {
+	/** 是否启用 PlantUML 渲染能力；关闭时 plantuml 代码块退化为普通代码高亮 */
+	enable: boolean;
+	/** PlantUML 服务器地址，尾部斜杠会自动归一化；默认使用官方公共服务器 */
+	server: string;
+	/** 亮色模式下注入的 PlantUML 主题名；空字符串表示不注入 */
+	lightTheme: string;
+	/** 暗色模式下注入的 PlantUML 主题名；空字符串表示不注入 */
+	darkTheme: string;
 };
 
 export type AnnouncementConfig = {
