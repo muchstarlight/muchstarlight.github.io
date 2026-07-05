@@ -6,18 +6,24 @@ import { i18n } from "@/i18n/translation";
 interface Props {
 	id: string;
 	name?: string;
+	showTitle?: boolean;
 	isCollapsed?: boolean;
 	collapsedHeight?: string;
 	useExpandedButtonSpacing?: boolean;
+	contentPadding?: boolean;
+	moreUrl?: string;
 	class?: string;
 	style?: string;
 }
 const {
 	id,
 	name,
+	showTitle = true,
 	isCollapsed,
 	collapsedHeight,
 	useExpandedButtonSpacing = false,
+	contentPadding = true,
+	moreUrl,
 	style,
 } = Astro.props;
 const className = Astro.props.class;
@@ -26,10 +32,10 @@ const className = Astro.props.class;
     data-id={id}
     data-is-collapsed={String(isCollapsed)}
     data-use-expanded-button-spacing={String(useExpandedButtonSpacing)}
-    class={"pb-4 card-base " + className}
+    class:list={["card-base", {"pb-4": contentPadding}, className]}
     style={style}
 >
-    {name && (
+    {name && showTitle && (
         <div class="widget-title font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
             before:w-1 before:h-4 before:rounded-md before:bg-(--primary)
             before:absolute before:left-[-16px] before:top-[5.5px] flex items-center justify-between">
@@ -37,24 +43,37 @@ const className = Astro.props.class;
             <slot name="title-icon" />
         </div>
     )}
-    <div id={id} class:list={["collapse-wrapper px-4 overflow-hidden", {"collapsed": isCollapsed, "pt-4": !name}]}>
+    <div id={id} class:list={["collapse-wrapper overflow-hidden", {"px-4": contentPadding, "collapsed": isCollapsed, "pt-4": contentPadding && (!name || !showTitle)}]}>
         <slot></slot>
     </div>
     {isCollapsed && <div class="expand-btn px-4 -mb-2">
-        <button
-            class="btn-plain rounded-lg w-full h-9"
-            title={i18n(I18nKey.more)}
-            aria-label={i18n(I18nKey.more)}
-            data-show-more={i18n(I18nKey.more)}
-            data-show-less={i18n(I18nKey.collapse)}
-            data-expanded="false"
-        >
-            <div class="text-(--primary) flex items-center justify-center gap-2 -translate-x-2">
-                <Icon name="material-symbols:more-horiz" class="toggle-icon-more text-[1.75rem]" aria-hidden="true"></Icon>
-                <Icon name="material-symbols:keyboard-arrow-up-rounded" class="toggle-icon-less hidden text-[1.75rem]" aria-hidden="true"></Icon>
-                <span class="toggle-text">{i18n(I18nKey.more)}</span>
-            </div>
-        </button>
+        {moreUrl ? (
+            <a
+                href={moreUrl}
+                class="btn-plain rounded-lg w-full h-9 flex items-center justify-center"
+                title={i18n(I18nKey.more)}
+            >
+                <div class="text-(--primary) flex items-center justify-center gap-2 -translate-x-2">
+                    <Icon is:inline name="material-symbols:more-horiz" class="text-[1.75rem]" aria-hidden="true"></Icon>
+                    <span>{i18n(I18nKey.more)}</span>
+                </div>
+            </a>
+        ) : (
+            <button
+                class="btn-plain rounded-lg w-full h-9"
+                title={i18n(I18nKey.more)}
+                aria-label={i18n(I18nKey.more)}
+                data-show-more={i18n(I18nKey.more)}
+                data-show-less={i18n(I18nKey.collapse)}
+                data-expanded="false"
+            >
+                <div class="text-(--primary) flex items-center justify-center gap-2 -translate-x-2">
+                    <Icon is:inline name="material-symbols:more-horiz" class="toggle-icon-more text-[1.75rem]" aria-hidden="true"></Icon>
+                    <Icon is:inline name="material-symbols:keyboard-arrow-up-rounded" class="toggle-icon-less hidden text-[1.75rem]" aria-hidden="true"></Icon>
+                    <span class="toggle-text">{i18n(I18nKey.more)}</span>
+                </div>
+            </button>
+        )}
     </div>}
 </widget-layout>
 

@@ -7,13 +7,13 @@ import Categories from "@/components/widget/Categories.astro";
 import Music from "@/components/widget/Music.astro";
 import Profile from "@/components/widget/Profile.astro";
 import SidebarTOC from "@/components/widget/SidebarTOC.astro";
+import SiteInfo from "@/components/widget/SiteInfo.astro";
 import SiteStats from "@/components/widget/SiteStats.astro";
 import Tags from "@/components/widget/Tags.astro";
 import { sidebarLayoutConfig } from "@/config";
 import type {
 	MobileBottomComponentConfig,
 	WidgetComponentConfig,
-	WidgetComponentType,
 } from "@/types/config";
 
 interface Props {
@@ -49,7 +49,8 @@ const componentMap = {
 	stats: SiteStats,
 	calendar: Calendar,
 	music: Music,
-} satisfies Record<WidgetComponentType, typeof Profile>;
+	siteInfo: SiteInfo,
+};
 
 // 获取侧边栏位置
 const side = (Astro.props.side ||
@@ -113,8 +114,8 @@ const isComponentInitiallyVisible = (
 		return false;
 	}
 	if (
-		"showOnNonPostPage" in config &&
-		config.showOnNonPostPage === false &&
+		"hideOnNonPostPage" in config &&
+		config.hideOnNonPostPage === true &&
 		!isPostPage
 	) {
 		return false;
@@ -130,9 +131,10 @@ const getComponentProps = (
 	const baseProps: Record<string, unknown> = {
 		class: "onload-animation",
 		style: `animation-delay: ${getAnimationDelay(index)}`,
+		widgetConfig: config,
 	};
 
-	// 添加 showOnPostPage 和 showOnNonPostPage 标记class（仅WidgetComponentConfig有这些属性）
+	// 添加 showOnPostPage 和 hideOnNonPostPage 标记class（仅WidgetComponentConfig有这些属性）
 	// 同时根据当前页面类型在服务端渲染时设置初始 hidden 状态，避免页面加载时闪烁
 	if ("showOnPostPage" in config && config.showOnPostPage === false) {
 		baseProps.class = `${baseProps.class} widget-hide-on-post`;
@@ -140,7 +142,7 @@ const getComponentProps = (
 			baseProps.class = `${baseProps.class} hidden`;
 		}
 	}
-	if ("showOnNonPostPage" in config && config.showOnNonPostPage === false) {
+	if ("hideOnNonPostPage" in config && config.hideOnNonPostPage === true) {
 		baseProps.class = `${baseProps.class} widget-hide-on-non-post`;
 		if (!isPostPage) {
 			baseProps.class = `${baseProps.class} hidden`;
@@ -150,15 +152,6 @@ const getComponentProps = (
 	// 特殊处理 SidebarTOC 组件
 	if (config.type === "sidebarToc") {
 		return { ...baseProps, headings: Astro.props.headings || [] };
-	}
-
-	// 特殊处理 Advertisement 组件
-	if (
-		config.type === "advertisement" &&
-		"configId" in config &&
-		config.configId
-	) {
-		return { ...baseProps, configId: config.configId };
 	}
 
 	return baseProps;

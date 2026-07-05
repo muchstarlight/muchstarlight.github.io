@@ -2,9 +2,10 @@
 interface Props {
 	websiteId: string;
 	scriptUrl?: string;
+	replaysScriptUrl?: string;
 	trackOutboundLinks?: boolean;
 	collectWebVitals?: boolean;
-	relpays?: {
+	replays?: {
 		enabled?: boolean;
 		sampleRate?: number;
 		maskLevel?: "moderate" | "strict";
@@ -16,16 +17,17 @@ interface Props {
 const {
 	websiteId,
 	scriptUrl,
+	replaysScriptUrl,
 	trackOutboundLinks = true,
 	collectWebVitals = false,
-	relpays,
+	replays,
 } = Astro.props;
 
-const relpaysEnabled = relpays?.enabled ?? false;
-const relpaysSampleRate = relpays?.sampleRate ?? 0.15;
-const relpaysMaskLevel = relpays?.maskLevel ?? "moderate";
-const relpaysMaxDuration = relpays?.maxDuration ?? 300000;
-const relpaysBlockSelector = relpays?.blockSelector?.trim();
+const replaysEnabled = replays?.enabled ?? false;
+const replaysSampleRate = replays?.sampleRate ?? 0.15;
+const replaysMaskLevel = replays?.maskLevel ?? "moderate";
+const replaysMaxDuration = replays?.maxDuration ?? 300000;
+const replaysBlockSelector = replays?.blockSelector?.trim();
 ---
 
 <script
@@ -35,13 +37,23 @@ const relpaysBlockSelector = relpays?.blockSelector?.trim();
 	src={scriptUrl}
 	data-website-id={websiteId}
 	data-performance={collectWebVitals ? "true" : undefined}
-	data-sample-rate={relpaysEnabled ? String(relpaysSampleRate) : undefined}
-	data-mask-level={relpaysEnabled ? relpaysMaskLevel : undefined}
-	data-max-duration={relpaysEnabled ? String(relpaysMaxDuration) : undefined}
-	data-block-selector={
-		relpaysEnabled && relpaysBlockSelector ? relpaysBlockSelector : undefined
-	}
 ></script>
+
+{
+	replaysEnabled && (
+		<script
+			is:inline
+			data-swup-ignore-script
+			defer
+			src={replaysScriptUrl}
+			data-website-id={websiteId}
+			data-sample-rate={String(replaysSampleRate)}
+			data-mask-level={replaysMaskLevel}
+			data-max-duration={String(replaysMaxDuration)}
+			data-block-selector={replaysBlockSelector || undefined}
+		/>
+	)
+}
 
 {
 	trackOutboundLinks && (

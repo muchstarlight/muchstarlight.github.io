@@ -27,7 +27,7 @@ html[data-waves-enabled="true"] #header-waves {
 
 .waves {
     overflow: visible;
-    z-index: 5;
+    z-index: 15;
     transform: translateZ(0);
     will-change: transform;
     contain: layout style;
@@ -120,7 +120,7 @@ html.is-page-transitioning #header-waves {
 @media (max-width: 1023px) {
     #header-waves {
         overflow: visible;
-        z-index: 5;
+        z-index: 25;
         transition: transform 0.3s ease-in, opacity 0.2s ease-in;
     }
 
@@ -142,17 +142,63 @@ html.is-page-transitioning #header-waves {
 }
 
 /* --------------------------------------------------------------------------
-   7. Overlay 模式隐藏波浪
+   7. Overlay 模式隐藏波浪和暗层
    -------------------------------------------------------------------------- */
 #wallpaper-wrapper.wallpaper-overlay .waves,
-#wallpaper-wrapper.wallpaper-overlay #header-waves {
+#wallpaper-wrapper.wallpaper-overlay #header-waves,
+#wallpaper-wrapper.wallpaper-overlay #banner-dim-container {
     display: none !important;
 }
 
 /* --------------------------------------------------------------------------
-   8. None 模式隐藏波浪
+   8. None 模式隐藏波浪和暗层
    -------------------------------------------------------------------------- */
 html[data-wallpaper-mode="none"] .waves,
-html[data-wallpaper-mode="none"] #header-waves {
+html[data-wallpaper-mode="none"] #header-waves,
+html[data-wallpaper-mode="none"] #banner-dim-container {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Gradient Transition Effect
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 用户控制 - 通过 html 属性控制显隐
+   -------------------------------------------------------------------------- */
+html[data-gradient-enabled="false"] #wallpaper-gradient {
+    display: none !important;
+}
+
+html[data-gradient-enabled="true"] #wallpaper-gradient {
+    display: block !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. 水波纹开启时隐藏渐变（水波纹优先）
+   -------------------------------------------------------------------------- */
+html[data-waves-enabled="true"] #wallpaper-gradient {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. 渐变容器基础样式
+   -------------------------------------------------------------------------- */
+#wallpaper-gradient {
+    z-index: 12;
+    transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. Overlay 模式隐藏渐变
+   -------------------------------------------------------------------------- */
+#wallpaper-wrapper.wallpaper-overlay #wallpaper-gradient {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. None 模式隐藏渐变
+   -------------------------------------------------------------------------- */
+html[data-wallpaper-mode="none"] #wallpaper-gradient {
     display: none !important;
 }

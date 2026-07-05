@@ -17,9 +17,11 @@ export const zh_CN: Translation = {
 
 	[Key.tags]: "标签",
 	[Key.categories]: "分类",
+	[Key.allCategories]: "全部分类",
+	[Key.allTags]: "全部标签",
 	[Key.recentPosts]: "最新文章",
 	[Key.postList]: "文章列表",
-	[Key.tableOfContents]: "目录",
+	[Key.tableOfContents]: "文章目录",
 	[Key.tocEmpty]: "当前页面没有目录",
 	[Key.music]: "音乐",
 	[Key.musicNoPlaying]: "暂未播放",
@@ -53,6 +55,8 @@ export const zh_CN: Translation = {
 		"您还未在配置文件中启用评论系统，启用后访客才可在此留言",
 	[Key.friends]: "友链",
 	[Key.friendsDescription]: "这里是我的朋友们，欢迎互相访问交流",
+	[Key.searchFriends]: "搜索友链...",
+	[Key.friendsEmpty]: "暂无友情链接",
 	[Key.guestbook]: "留言",
 	[Key.guestbookDescription]: "欢迎在这里留下你的足迹，分享你的想法和建议",
 	[Key.untitled]: "无标题",
@@ -65,6 +69,8 @@ export const zh_CN: Translation = {
 	[Key.minutesCount]: "分钟",
 	[Key.postCount]: "篇文章",
 	[Key.postsCount]: "篇文章",
+	[Key.tagsCount]: "个标签",
+	[Key.noData]: "暂无数据",
 
 	[Key.themeColor]: "主题色相",
 
@@ -119,6 +125,9 @@ export const zh_CN: Translation = {
 	[Key.bangumiNoDataDescription]: "该分类下还没有任何条目",
 	[Key.bangumiEmpty]: "暂无数据",
 	[Key.bangumiEmptyReason]: "可能的原因：用户名不存在、网络连接问题或API限制",
+	[Key.bangumiFetchError]: "Bangumi 数据拉取失败",
+	[Key.bangumiFetchErrorDesc]:
+		"构建时从 Bangumi API 获取数据失败，该页面内容暂不可用。",
 	[Key.bangumiUsername]: "用户名",
 	[Key.bangumiApi]: "API",
 	[Key.bangumiConfigTip]: "提示：请在页面配置中设置正确的Bangumi用户名",
@@ -139,6 +148,45 @@ export const zh_CN: Translation = {
 	[Key.bangumiLastUpdated]: "数据更新于",
 	[Key.bangumiUpdatedAt]: "构建时间",
 	[Key.bangumiDataStatic]: "静态数据",
+
+	// 追番
+	[Key.anime]: "追番",
+	[Key.animeSubtitle]: "我的追番列表，数据来自 Bilibili 和 TMDB",
+	[Key.animeTotal]: "总追番",
+	[Key.animeAverageRating]: "平均评分",
+	[Key.animeSearch]: "搜索番剧...",
+	[Key.animeAllTypes]: "全部",
+	[Key.animeTV]: "TV 动画",
+	[Key.animeMovie]: "电影",
+	[Key.animeRatingDesc]: "评分最高",
+	[Key.animeRatingAsc]: "评分最低",
+	[Key.animeDateDesc]: "最新发布",
+	[Key.animeDateAsc]: "最早发布",
+	[Key.animeNoResults]: "没有找到匹配的番剧",
+	[Key.animeLastUpdated]: "数据更新于",
+	[Key.animeSource]: "数据来源",
+	[Key.animeEpStatus]: "进度",
+	[Key.animeViewDetails]: "查看详情",
+	[Key.animeNotConfigured]: "未配置追番数据源",
+	[Key.animeNotConfiguredDesc]:
+		"请在 src/config/siteConfig.ts 中配置 Bilibili UID 或 TMDB API Key",
+	[Key.animeBilibiliAvg]: "Bilibili 均分",
+	[Key.animeTmdbAvg]: "TMDB 均分",
+	[Key.animeDualSynced]: "双源已同步",
+	[Key.animeNoOverview]: "暂无简介",
+	[Key.animeClose]: "关闭",
+	[Key.animeSynopsis]: "剧情简介",
+	[Key.animeWatchNow]: "立即观看",
+	[Key.animeViewTmdb]: "查看 TMDB 详情",
+	[Key.animeAllWithCount]: "全部 ({count})",
+	[Key.animeTVWithCount]: "TV ({count})",
+	[Key.animeMovieWithCount]: "电影 ({count})",
+	[Key.animeTypeAnime]: "番剧",
+	[Key.animeTypeMovie]: "电影",
+	[Key.animeTypeDocumentary]: "纪录片",
+	[Key.animeTypeChinese]: "国创",
+	[Key.animeTypeDrama]: "电视剧",
+	[Key.animeTypeConcert]: "演唱会",
 
 	// 分页
 	[Key.paginationFirst]: "首页",
@@ -199,6 +247,8 @@ export const zh_CN: Translation = {
 	[Key.randomPosts]: "随机文章",
 	[Key.smartRecommend]: "智能推荐",
 	[Key.randomRecommend]: "随机推荐",
+	[Key.noRelatedPosts]: "暂无相关文章",
+	[Key.noRandomPosts]: "暂无随机文章",
 
 	// 加密
 	[Key.postEncrypted]: "本文已加密",
@@ -206,14 +256,18 @@ export const zh_CN: Translation = {
 	// 壁纸模式
 	[Key.wallpaperMode]: "壁纸模式",
 	[Key.wallpaperBannerMode]: "横幅壁纸",
+	[Key.wallpaperFullscreenMode]: "全屏壁纸",
 	[Key.wallpaperOverlayMode]: "全屏透明",
 	[Key.wallpaperNoneMode]: "纯色背景",
 
-	// 横幅设置
-	[Key.bannerSettings]: "横幅设置",
-	[Key.bannerTitle]: "首页横幅标题",
-	[Key.bannerCarousel]: "横幅轮播",
+	// 壁纸设置
+	[Key.wallpaperSettings]: "壁纸设置",
+	[Key.wallpaperTitle]: "首页壁纸标题",
+	[Key.wallpaperCarousel]: "壁纸轮播",
 	[Key.wavesAnimation]: "水波纹动画",
+	[Key.gradientTransition]: "渐变过渡",
+	[Key.sakuraEffect]: "樱花特效",
+	[Key.effectsSettings]: "特效设置",
 	[Key.overlaySettings]: "透明设置",
 	[Key.overlayOpacity]: "壁纸透明度",
 	[Key.overlayBlur]: "背景模糊度",
@@ -224,23 +278,23 @@ export const zh_CN: Translation = {
 	[Key.postListLayoutList]: "列表",
 	[Key.postListLayoutGrid]: "网格",
 
-	// 赞助页面
-	[Key.sponsor]: "赞助",
-	[Key.sponsorTitle]: "赞助支持",
+	// 打赏页面
+	[Key.sponsor]: "打赏",
+	[Key.sponsorTitle]: "打赏支持",
 	[Key.sponsorDescription]:
-		"如果我的内容对你有帮助，欢迎通过以下方式赞助我，你的支持是我持续创作的动力！",
-	[Key.sponsorMethods]: "赞助方式",
-	[Key.sponsorList]: "赞助列表",
-	[Key.sponsorEmpty]: "暂无赞助记录",
+		"如果我的内容对你有帮助，欢迎通过以下方式打赏我，你的支持是我持续创作的动力！",
+	[Key.sponsorMethods]: "打赏方式",
+	[Key.sponsorList]: "打赏列表",
+	[Key.sponsorEmpty]: "暂无打赏记录",
 	[Key.sponsorAmount]: "金额",
 	[Key.sponsorDate]: "日期",
 	[Key.sponsorMessage]: "留言",
 	[Key.sponsorAnonymous]: "匿名",
-	[Key.scanToSponsor]: "扫码赞助",
-	[Key.sponsorGoTo]: "前往赞助",
+	[Key.scanToSponsor]: "扫码打赏",
+	[Key.sponsorGoTo]: "前往打赏",
 	[Key.sponsorButton]: "支持与分享",
 	[Key.sponsorButtonText]:
-		"如果这篇文章对你有帮助，欢迎分享给更多人或赞助支持！",
+		"如果这篇文章对你有帮助，欢迎分享给更多人或打赏支持！",
 
 	[Key.shareOnSocial]: "文章分享",
 	[Key.shareOnSocialDescription]: "如果这篇文章对你有帮助，欢迎分享给更多人！",
@@ -256,6 +310,20 @@ export const zh_CN: Translation = {
 	[Key.siteStatsDaysAgo]: "{days} 天前",
 	[Key.siteStatsDays]: "{days} 天",
 	[Key.today]: "今天",
+
+	// 站点信息
+	[Key.siteInfo]: "站点信息",
+	[Key.siteInfoBuildTime]: "构建时间",
+	[Key.siteInfoBuildPlatform]: "构建平台",
+	[Key.siteInfoBlogVersion]: "博客版本",
+	[Key.siteInfoAstroVersion]: "Astro",
+	[Key.siteInfoNodeVersion]: "Node",
+	[Key.siteInfoPnpmVersion]: "pnpm",
+	[Key.siteInfoSystem]: "系统信息",
+	[Key.siteInfoExpand]: "展开构建信息",
+	[Key.siteInfoCollapse]: "收起构建信息",
+	[Key.siteInfoDomain]: "站点域名",
+	[Key.siteInfoLicense]: "文章许可",
 
 	// 日历组件
 	[Key.calendarSunday]: "日",
@@ -277,6 +345,9 @@ export const zh_CN: Translation = {
 	[Key.calendarOctober]: "10月",
 	[Key.calendarNovember]: "11月",
 	[Key.calendarDecember]: "12月",
+	[Key.calendar]: "站点日历",
+	[Key.calendarHeatmapWeek]: "{month}月第{week}周，{count}篇文章",
+	[Key.advertisement]: "广告",
 
 	[Key.shareArticle]: "分享",
 	[Key.generatingPoster]: "海报生成中...",
@@ -298,13 +369,21 @@ export const zh_CN: Translation = {
 	[Key.galleryAlbums]: "本相册",
 	[Key.galleryNoAlbums]: "暂无相册",
 	[Key.galleryBackToAlbums]: "返回相册列表",
+	[Key.searchAlbums]: "搜索相簿...",
 
 	// 密码保护
 	[Key.passwordProtected]: "密码保护",
-	[Key.passwordProtectedDesc]: "这篇文章已被密码保护，请输入密码查看内容。",
+	[Key.passwordProtectedDesc]: "此内容已被密码保护，请输入密码查看。",
 	[Key.passwordHint]: "提示",
 	[Key.passwordPlaceholder]: "请输入密码",
 	[Key.passwordSubmit]: "解锁",
 	[Key.passwordError]: "密码错误，请重试。",
 	[Key.passwordProtectedRss]: "本文已加密保护，请访问网站查看。",
+
+	// 背景视频播放器
+	[Key.videoPlay]: "播放背景视频",
+	[Key.videoPause]: "暂停背景视频",
+	[Key.videoPrev]: "上一个视频",
+	[Key.videoNext]: "下一个视频",
+	[Key.videoLoadError]: "视频加载失败",
 };

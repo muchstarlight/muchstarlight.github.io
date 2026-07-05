@@ -5,10 +5,16 @@ on:
     branches: [master]
   workflow_dispatch:
 
+# Pages 部署需要的权限
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# 确保只有一个部署任务同时运行
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -32,6 +38,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -46,4 +55,3 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4

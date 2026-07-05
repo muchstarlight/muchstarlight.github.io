@@ -5,7 +5,9 @@
 @import './waves.css';
 @import './transition.css'; 
 @import './custom-scrollbar.css';
-
+@import './tags.css';
+@import './gallery.css';
+@import './anime-bangumi.css';
 
 @plugin '@tailwindcss/typography';
 
@@ -207,11 +209,24 @@ html {
         @apply rounded-(--radius-large) overflow-hidden bg-(--card-bg-transparent) transition-colors duration-150;
     }
 
+    /* LQIP 占位渐变 */
+    .lqip-placeholder {
+        z-index: 0;
+        transition: opacity 0.5s ease-out;
+    }
+    .lqip-placeholder.loaded {
+        opacity: 0;
+    }
+
+
     /* 开启边框和阴影效果时的样式 */
     .enable-card-border .card-base {
         @apply transition-all duration-300 border border-(--line-divider) shadow-xs;
     }
     .enable-card-border .card-base-transparent {
+        @apply transition-all duration-300 border border-(--line-divider) shadow-xs;
+    }
+    .enable-card-border .btn-card {
         @apply transition-all duration-300 border border-(--line-divider) shadow-xs;
     }
 
@@ -227,6 +242,11 @@ html {
         box-shadow: none !important;
         transition: none !important;
     }
+
+    /* 壁纸模式切换期间禁止 #main-grid 的 transform 过渡动画，防止抖动 */
+    /* .is-wallpaper-transitioning #main-grid {
+        transition: none !important;
+    } */
 
     /* 全屏壁纸模式下的半透明效果 */
     .wallpaper-transparent .card-base {
@@ -251,7 +271,11 @@ html {
     .wallpaper-transparent .btn-card {
         background-color: var(--card-bg-transparent) !important;
     }
-    
+
+    .wallpaper-transparent .bg-\(--card-bg\) {
+        background-color: var(--card-bg-transparent) !important;
+    }
+
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition-colors duration-150;
     }
@@ -318,11 +342,11 @@ html {
 
     .hide-scrollbar {
         scrollbar-width: none;
-        -ms-overflow-style: none;
     }
     .hide-scrollbar::-webkit-scrollbar {
         display: none;
     }
+
 
     .text-90 {
         @apply text-black/90 dark:text-white/90
@@ -561,3 +585,4 @@ html {
 .pagination-info {
   @apply text-sm text-(--text-secondary) text-center mb-2;
 }
+

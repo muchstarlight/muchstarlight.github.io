@@ -8,7 +8,7 @@
 > 
 > ![Node.js >= 22](https://img.shields.io/badge/node.js-%3E%3D22-brightgreen) 
 ![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue)
-![Astro](https://img.shields.io/badge/Astro-6.1.5-orange)
+![Astro](https://img.shields.io/badge/Astro-7.0.2-orange)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue)
 >
 > [![Stars](https://img.shields.io/github/stars/CuteLeaf/Firefly?style=social)](https://github.com/CuteLeaf/Firefly/stargazers)
@@ -21,7 +21,7 @@
 > 
 > ![GitHub License](https://img.shields.io/github/license/CuteLeaf/Firefly)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/CuteLeaf/Firefly)
-[![愛發電贊助](https://img.shields.io/badge/愛發電-贊助作者-ff69b4.svg)](https://ifdian.net/a/cuteleaf)
+[![愛發電打賞](https://img.shields.io/badge/愛發電-打賞作者-ff69b4.svg)](https://ifdian.net/a/cuteleaf)
 
 </div>
 
@@ -43,8 +43,20 @@
 
 🔧 高度可配置: 大部分功能模組均可透過配置檔案自訂
 
-<img alt="firefly" src="./images/1.webp" />
-<img alt="Lighthouse" src="./images/Lighthouse.png" />
+<table width="100%" align="center">
+  <tr>
+    <td colspan="3" align="center">
+      <img src="./images/1.webp" >
+      <br>橫幅模式</td>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><img src="./images/3.webp" width="300"><br>透明模式</td>
+    <td align="center"><img src="./images/2.webp" width="300"><br>全螢幕桌布模式</td>
+    <td align="center"><img src="./images/4.webp" width="300"><br>純色模式</td>
+  </tr>
+</table>
+<img alt="Lighthouse" src="./docs/images/Lighthouse.png" />
 
 >[!TIP]
 >
@@ -81,7 +93,7 @@
 - [x] **頁尾配置** - HTML 內容注入，完全自訂
 - [x] **亮暗色模式** - 支援亮色/暗色/跟隨系統三種模式
 - [x] **導覽列自訂** - Logo、標題、連結全面自訂
-- [x] **桌布模式切換** - 橫幅桌布、全螢幕桌布、純色背景
+- [x] **桌布模式切換** - 橫幅桌布、全螢幕桌布、全螢幕透明桌布、純色背景
 - [x] **主題色自訂** - 360° 色相調節
 
 
@@ -126,6 +138,9 @@
    ```
    部落格將在 `http://localhost:4321` 可用
 
+### 社區教程
+Cloudflare Workers部署：[【不用服务器，无需备案，零成本搭建一个自己的个人博客】](https://www.bilibili.com/video/BV1hX9XBKEhm)
+
 ### 平台託管部署
 - **參考[官方指南](https://docs.astro.build/zh-cn/guides/deploy/)將部落格部署至 Vercel, Netlify, Cloudflare Pages, EdgeOne Pages 等。**
 - **Vercel**、**Netlify** 等主流平台自動部署，會根據環境自動選擇適配器。
@@ -168,27 +183,27 @@ const SITE_LANG = "zh_CN";
 ```
 src/
 ├── config/
-│   ├── index.ts              # 配置索引檔案
-│   ├── siteConfig.ts         # 站點基礎配置
-│   ├── backgroundWallpaper.ts # 背景桌布配置
-│   ├── profileConfig.ts      # 使用者資料配置
-│   ├── commentConfig.ts      # 留言系統配置
-│   ├── announcementConfig.ts # 公告配置
-│   ├── licenseConfig.ts      # 授權配置
-│   ├── footerConfig.ts       # 頁尾配置
-│   ├── FooterConfig.html     # 頁尾HTML內容
-│   ├── expressiveCodeConfig.ts # 程式碼高亮配置
-│   ├── sakuraConfig.ts       # 櫻花特效配置
-│   ├── fontConfig.ts         # 字型配置
-│   ├── sidebarConfig.ts      # 側邊欄版面配置配置
-│   ├── navBarConfig.ts       # 導覽列配置
-│   ├── musicConfig.ts        # 音樂播放器配置
-│   ├── pioConfig.ts          # 看板娘配置
-│   ├── adConfig.ts           # 廣告配置
-│   ├── friendsConfig.ts      # 友鏈配置
-│   ├── galleryConfig.ts      # 相簿配置
-│   ├── sponsorConfig.ts      # 贊助配置
-│   └── coverImageConfig.ts   # 文章隨機封面圖配置
+│   ├── index.ts                  # 配置索引檔案
+│   ├── siteConfig.ts             # 站點基礎配置
+│   ├── analyticsConfig.ts        # 統計分析配置
+│   ├── announcementConfig.ts     # 公告配置
+│   ├── backgroundWallpaper.ts    # 背景桌布配置
+│   ├── commentConfig.ts          # 留言系統配置
+│   ├── coverImageConfig.ts       # 封面圖配置
+│   ├── effectsConfig.ts          # 動畫特效配置（櫻花等）
+│   ├── expressiveCodeConfig.ts   # 程式碼高亮配置
+│   ├── fontConfig.ts             # 字型配置
+│   ├── footerConfig.ts           # 頁尾配置
+│   ├── friendsConfig.ts          # 友鏈配置
+│   ├── galleryConfig.ts          # 相簿配置
+│   ├── licenseConfig.ts          # 授權配置
+│   ├── musicConfig.ts            # 音樂播放器配置
+│   ├── navBarConfig.ts           # 導覽列配置
+│   ├── pioConfig.ts              # 看板娘配置
+│   ├── plantumlConfig.ts         # PlantUML 圖表配置
+│   ├── profileConfig.ts          # 使用者資料配置
+│   ├── sidebarConfig.ts          # 側邊欄版面配置
+│   └── sponsorConfig.ts          # 打賞配置
 ```
 
 
